@@ -176,18 +176,14 @@
 		                	<div class="col-lg-2"> TS #  </div>
 		                	<div class="col-lg-2"> Date </div>
 		                	<div class="col-lg-2"> Day  </div>
-		                	<div class="col-lg-2"> Task Type </div>
 		                	<div class="col-lg-2"> Number of Hours</div>
-		                	<div class="col-lg-2"> Service Area</div>
 		                </div>
 		                <c:forEach var="timesheet" items="${sessionScope.timesheets}" varStatus="loopStatus">
 			                 <div class="row ${loopStatus.index % 2 == 0 ? 'z0':'z1' }" >
 			                	<div class="col-lg-2"> ${timesheet.name} </div>
 			                	<div class="col-lg-2"> ${timesheet.date} </div>
 			                	<div class="col-lg-2"> ${timesheet.day} </div>
-			                	<div class="col-lg-2"> ${timesheet.taskType} </div>
 			                	<div class="col-lg-2"> ${timesheet.numberOfHours} </div>
-			                	<div class="col-lg-2"> ${timesheet.serviceArea} </div>
 			                </div>
 		                </c:forEach>
 			                

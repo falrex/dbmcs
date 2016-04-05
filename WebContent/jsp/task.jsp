@@ -49,18 +49,18 @@
 		                
 		                <div class="row top5"></div>
 		                <div class="row" >
-		                	<div class="col-lg-2"> Record Type </div>
-		                	<div class="col-lg-2"> Task Type </div>
-		                	<div class="col-lg-4"> Task </div>
 		                	<div class="col-lg-2"> Task Name </div>
+		                	<div class="col-lg-4"> Project </div>
+		                	<div class="col-lg-2"> Class </div>
+		                	<div class="col-lg-2"> Type </div>
 		                	<div class="col-lg-2"> </div>
 		                </div>
 		                <c:forEach var="task" items="${sessionScope.taskList}" varStatus="loopStatus">
 			                 <div class="row ${loopStatus.index % 2 == 0 ? 'z0':'z1' }" >
-			                	<div class="col-lg-2"> ${task.recordType} </div>
+			                	<div class="col-lg-2"> ${task.name} </div>
+			                	<div class="col-lg-4"> ${task.project} </div>
+			                	<div class="col-lg-2"> ${task.taskClass} </div>
 			                	<div class="col-lg-2"> ${task.taskType} </div>
-			                	<div class="col-lg-4"> ${task.task} </div>
-			                	<div class="col-lg-2"> ${task.taskName} </div>
 			                	<div class="col-lg-2"> <a href="taskdetails?taskId=${task.id}">View Details</a></div>
 			                </div>
 		                </c:forEach>

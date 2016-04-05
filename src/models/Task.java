@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Task {
-	@JsonProperty(value="RecordTypeId")
-	private String recordType;
+	@JsonProperty(value="Class__c")
+	private String taskClass;
 	
 	@JsonProperty(value="Id")
 	private String id;
@@ -30,7 +30,7 @@ public class Task {
 	@JsonProperty(value="Task__c")
 	private String task;
 	
-	@JsonProperty(value="Task_Type__c")
+	@JsonProperty(value="Type__c")
 	private String taskType;
 	
 	@JsonProperty(value="Description__c")
@@ -85,12 +85,14 @@ public class Task {
 	@JsonProperty(value="Schedule_Variance__c")
 	private String scheduleVariance;
 	
-	public String getRecordType() {
-		return recordType;
+
+
+	public String getTaskClass() {
+		return taskClass;
 	}
 
-	public void setRecordType(String recordType) {
-		this.recordType = recordType;
+	public void setTaskClass(String taskClass) {
+		this.taskClass = taskClass;
 	}
 
 	public String getId() {

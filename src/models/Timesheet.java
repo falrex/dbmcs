@@ -24,10 +24,10 @@ public class Timesheet {
 	@JsonProperty(value="Service_Area__c")
 	private String serviceArea;
 	
-	@JsonProperty(value="Task__c")
+	@JsonProperty(value="Task_Name__c")
 	private String task;
 	
-	@JsonProperty(value="Task_Type__c")
+	@JsonProperty(value="Type__c")
 	private String taskType;
 	
 	@JsonProperty(value="Week__c")

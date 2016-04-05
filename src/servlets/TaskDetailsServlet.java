@@ -35,27 +35,24 @@ public class TaskDetailsServlet extends HttpServlet{
 	//	 Resource resource = (Resource) session.getAttribute("resource");
 		 SalesforceConnection connection = (SalesforceConnection<Login>) session.getAttribute("connection");
 		 //
-		 List<Task> taskDetailsList = (List<Task>)connection.retrieve("Select id, RecordTypeId, Resource__c, Project__c, Task_Type__c, Task__c, "
-		 													+ "Task_Name__c, Description__c, Forecast_Hours__c, Planned_Start_Date__c, "
+		/* List<Task> taskDetailsList = (List<Task>)connection.retrieve("Select id, Resource__c, Project__c, "
+		 													+  "Description__c, Forecast_Hours__c, Planned_Start_Date__c, "
 		 													+ "Planned_Finish_Date__c, Number_of_Revisions__c, Deliverable__c, Details_of_Changes__c, "
 		 													+ "Number_of_Business_Requirements__c, Negative_Review_Remarks__c, Number_of_Functional_Requirements__c,"
-		 													+ "Number_of_Test_Cases__c from DB_Task__c where id = '" + taskId + "'", Task.class);
-		 
+		 													+ "Number_of_Test_Cases__c from DB_Task__c where id = '" + taskId + "'", Task.class);*/
 		 ForceApi api = connection.getApi();
-		 Resource resource= (Resource) api.getSObject("DB_Resource__c", taskDetailsList.get(0).getResource().toString()).as(Resource.class);
-		 Task taskDetails = new Task();
+		 Task taskDetails= (Task) api.getSObject("DB_Task__c", taskId.toString()).as(Task.class);
 		 
-		 Project project= (Project) api.getSObject("DB_Project__c", taskDetailsList.get(0).getProject().toString()).as(Project.class);
+		 Resource resource= (Resource) api.getSObject("DB_Resource__c", taskDetails.getResource().toString()).as(Resource.class);		
 		 
-		 List<Timesheet> timesheets = (List<Timesheet>)connection.retrieve("Select Name, Date__c, Day__c,Task_Type__c,Number_of_hours__c,Service_Area__c from DB_Timesheet__c where Task__c ='" + taskId + "'", Timesheet.class);
+		 Project project= (Project) api.getSObject("DB_Project__c", taskDetails.getProject().toString()).as(Project.class);
+		 
+		 List<Timesheet> timesheets = (List<Timesheet>)connection.retrieve("Select Name, Date__c, Day__c,Type__c,Number_of_hours__c from DB_Timesheet__c where Task_Name__c ='" + taskId + "'", Timesheet.class);
 		
-		 //only get the first on the list
-		 if (taskDetailsList != null && !taskDetailsList.isEmpty()) {
-			 taskDetails = taskDetailsList.get(0);
 			 taskDetails.setResource(resource.getName());
 			 taskDetails.setProject(project.getName());
 			 session.setAttribute("taskDetails", taskDetails);
-		 } 
+		 
 		 
 		 if(timesheets != null && !timesheets.isEmpty()) {
 			 session.setAttribute("timesheets", timesheets);
