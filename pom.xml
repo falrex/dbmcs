@@ -122,7 +122,7 @@
 	                <assembleDirectory>target</assembleDirectory>
 	                <programs>
 	                    <program>
-	                        <mainClass>launch.Main</mainClass>
+	                        <mainClass>build.classes.launch.Main</mainClass>
 	                        <name>webapp</name>
 	                    </program>
 	                </programs>
