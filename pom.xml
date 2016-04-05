@@ -3,15 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.heroku.sample</groupId>
-	<artifactId>embeddedTomcatSample</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>dbmcs</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>embeddedTomcatSample Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+	
   
 	<properties>
-		<!-- <tomcat.version>7.0.57</tomcat.version> -->
 		<tomcat.version>8.0.28</tomcat.version>
 	</properties>
 	
@@ -138,6 +136,7 @@
 	                </execution>
 	            </executions>
 	        </plugin>
+	        
 	    </plugins>
 	  </build>
 
@@ -149,6 +148,7 @@
 	        <artifactId>maven-war-plugin</artifactId>
 	        <configuration>
 	          <failOnMissingWebXml>false</failOnMissingWebXml>
+	          <webXml>src\main\webapp\WEB-INF\web.xml</webXml>      
 	        </configuration>
 	      </plugin>
 	    </plugins>
